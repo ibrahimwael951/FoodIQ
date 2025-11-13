@@ -61,7 +61,7 @@ const Button: React.FC<props> = ({
           }}
           transition={{ duration: 0.2 }}
           className={cn(
-            "absolute bottom-0 right-0 h-full w-full bg-secondary   z-0",
+            "absolute bottom-0 right-0 h-[120%] w-[120%] bg-secondary rounded-2xl z-0",
             hoverDivStyle
           )}
         />
