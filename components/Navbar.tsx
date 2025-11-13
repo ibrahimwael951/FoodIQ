@@ -8,14 +8,11 @@ import { FadeDownAnimation } from "@/lib/Animation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { BiMenu } from "react-icons/bi";
-import { SignInButton, useUser } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
-import { dark, experimental__simple } from "@clerk/themes";
 
 const Navbar = () => {
   const pathName = usePathname();
   const { resolvedTheme } = useTheme();
-  const { isSignedIn, isLoaded } = useUser();
   const [menu, setMenu] = useState<boolean>(false);
 
   return (
@@ -46,39 +43,13 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-          <div className="flex items-center gap-2">
-            {isLoaded ? (
-              isSignedIn ? (
-                <Button href="/dashboard">Dashboard</Button>
-              ) : (
-                <SignInButton
-                  mode="modal"
-                  appearance={{
-                    theme:
-                      resolvedTheme === "dark" ? dark : experimental__simple,
-                  }}
-                >
-                  <motion.button
-                    whileHover={{ scale: 1.06 }}
-                    whileTap={{ scale: 0.94 }}
-                    className="hover:bg-transparent border font-medium border-yellow-500 text-black hover:text-yellow-500 bg-yellow-500 p-2 rounded-2xl  cursor-pointer"
-                  >
-                    Sign In
-                  </motion.button>
-                </SignInButton>
-              )
-            ) : (
-              <button className="hover:bg-transparent border font-medium border-yellow-500 text-black hover:text-yellow-500 bg-yellow-500 p-2 rounded-2xl  cursor-pointer">
-                Loading
-              </button>
-            )}
-            <Button
-              className="flex items-center justify-center md:hidden"
-              onClick={() => setMenu(!menu)}
-            >
-              <BiMenu size={30} />
-            </Button>
-          </div>
+
+          <Button
+            className="flex items-center justify-center md:hidden"
+            onClick={() => setMenu(!menu)}
+          >
+            <BiMenu size={30} />
+          </Button>
         </div>
       </motion.nav>
       <AnimatePresence>

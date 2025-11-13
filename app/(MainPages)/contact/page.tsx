@@ -1,26 +1,16 @@
 "use client";
-import { useUser } from "@clerk/nextjs";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "@/components/ui/Button";
-import { BiUser } from "react-icons/bi";
 import { FadeUpAnimation } from "@/lib/Animation";
 
 export default function Page() {
-  const { isSignedIn, user } = useUser();
   const [success, setSuccess] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const canEdit = user ? true : false;
-
-  useEffect(() => {
-    if (!user || !isSignedIn) return;
-    setEmail(`${user.emailAddresses}`);
-    setName(`${user.fullName}`);
-  }, [user, isSignedIn]);
 
   //   why should i rent server to send me email
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -39,7 +29,6 @@ export default function Page() {
         from: "FoodIQ",
         name,
         email,
-        ...(isSignedIn && { userId: user.id }),
         message,
       }),
     });
@@ -110,22 +99,6 @@ export default function Page() {
               onSubmit={handleSubmit}
               className="relative flex flex-col justify-center gap-2 w-full max-w-2xl "
             >
-              <AnimatePresence>
-                {canEdit && (
-                  <motion.p
-                    {...FadeUpAnimation}
-                    className="flex flex-col items-center justify-center gap-2 text-center text-base! font-semibold  bg-red-600 w-fit mx-auto p-3 px-5 rounded-2xl "
-                  >
-                    <BiUser className="p-2 w-16 h-16 bg-white rounded-full text-red-600" />
-                    <p className="text-white!">
-                      We are using your profile Information to Contact Us
-                    </p>
-                    <p className="text-sm! text-white/80!">
-                      Thats will help us to solve your problem and contact you
-                    </p>
-                  </motion.p>
-                )}
-              </AnimatePresence>
               <div className="flex flex-col md:flex-row gap-2 w-full ">
                 <div className="w-full md:w-2/4">
                   <motion.label>Your Full Name</motion.label>
@@ -138,7 +111,6 @@ export default function Page() {
                     onChange={(e) => setName(e.target.value)}
                     type="text"
                     placeholder="Your Name"
-                    disabled={canEdit}
                     className="w-full border-2 border-secondary rounded-xl py-4 px-5 text-xl outline-none disabled:bg-secondary disabled:text-white"
                   />
                 </div>
@@ -153,7 +125,6 @@ export default function Page() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your Email"
-                    disabled={canEdit}
                     className="w-full border-2 border-secondary rounded-xl py-4 px-5 text-xl outline-none disabled:bg-secondary disabled:text-white"
                   />
                 </div>
