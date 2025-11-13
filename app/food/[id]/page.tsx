@@ -76,7 +76,7 @@ export default function FoodPage() {
     .filter((c) => c.length > 0);
 
   return (
-    <section className="w-full max-w-7xl mx-auto p-4 grid md:grid-cols-2 gap-10 mb-20">
+    <section className="mt-24 w-full max-w-7xl mx-auto p-4 grid md:grid-cols-2 gap-10 mb-20">
       <div className="w-full flex flex-col justify-center items-center gap-4 max-w-96 md:max-w-xl mx-auto">
         {product.image_front_url ? (
           <motion.img

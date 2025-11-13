@@ -6,7 +6,7 @@ import { FadeUpAnimation } from "@/lib/Animation";
 
 const Hero = () => {
   return (
-    <main className="relative flex justify-center items-center text-center h-[80vh]! min-h-fit! overflow-hidden">
+    <main className="relative flex justify-center items-center text-center overflow-hidden">
       <div className="  p-10 rounded-2xl z-10 ">
         <motion.h1 {...FadeUpAnimation} className="font-semibold mb-4 max-w-xl">
           Best food for your taste
