@@ -3,8 +3,25 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Button from "../ui/Button";
 import { FadeUpAnimation } from "@/lib/Animation";
+import { useUser } from "@clerk/nextjs";
 
 const Hero = () => {
+  const { user, isSignedIn, isLoaded } = useUser();
+  if (!isLoaded && !user)
+    return (
+      <main className="flex flex-col justify-center items-center gap-4 text-2xl">
+        <div className="w-32 h-32 border border-secondary border-t-transparent animate-spin rounded-full" />
+        Loading...
+      </main>
+    );
+  if (isSignedIn)
+    return (
+      <div className="mt-20 px-5 lg:px-10 ">
+        <h1>
+          Welcome <span className="text-secondary">{user.fullName}</span>
+        </h1>
+      </div>
+    );
   return (
     <main className="relative flex justify-center items-center text-center overflow-hidden">
       <div className="  p-10 rounded-2xl z-10 ">
@@ -19,10 +36,10 @@ const Hero = () => {
           and Check Your Snacks is it healthy or not
         </motion.h6>
         <div className="flex items-center justify-center gap-5 text-xl ">
-          <Button changeColor href="/signUp" Animate>
+          <Button changeColor href="/sign-up" Animate>
             Join Us
           </Button>
-          <Button href="/signUp" Animate>
+          <Button href="/menu" Animate>
             Explore Menu
           </Button>
         </div>

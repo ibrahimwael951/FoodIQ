@@ -6,7 +6,7 @@ export default function Page() {
   return (
     <main className="space-y-10">
       <Hero />
-      <MealsList maxPages={1} pageSize={4} hideLastCard />
+      <MealsList pageSize={4} />
       <FoodList maxPages={1} pageSize={4} hideLastCard />
     </main>
   );

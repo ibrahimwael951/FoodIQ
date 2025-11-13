@@ -8,21 +8,23 @@ import { FadeDownAnimation } from "@/lib/Animation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { BiMenu } from "react-icons/bi";
-import { useUser } from "@clerk/nextjs";
-import ThemeToggle from "./ThemeToggle";
+import { SignInButton, useUser } from "@clerk/nextjs";
+import { useTheme } from "next-themes";
+import { dark, experimental__simple } from "@clerk/themes";
 
 const Navbar = () => {
   const pathName = usePathname();
-  const { user, isSignedIn, isLoaded } = useUser();
+  const { resolvedTheme } = useTheme();
+  const { isSignedIn, isLoaded } = useUser();
   const [menu, setMenu] = useState<boolean>(false);
 
   return (
     <>
       <motion.nav
         {...FadeDownAnimation}
-        className="fixed top-0 left-0 w-full  z-50"
+        className="fixed top-0 left-0 w-full z-50"
       >
-        <div className="w-full max-w-7xl mx-auto flex justify-between items-center gap-4 bg-neutral-100 dark:bg-neutral-950  px-5 py-5 lg:px-10 rounded-b-4xl">
+        <div className="w-full h-20 max-w-7xl mx-auto flex justify-between items-center gap-4 bg-neutral-100 dark:bg-neutral-950  px-5 py-5 lg:px-10 rounded-b-4xl">
           <Link
             href="/"
             className="flex text-3xl md:text-4xl items-center gap-2 font-semibold"
@@ -44,9 +46,32 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-          <ThemeToggle />
           <div className="flex items-center gap-2">
-            
+            {isLoaded ? (
+              isSignedIn ? (
+                <Button href="/dashboard">Dashboard</Button>
+              ) : (
+                <SignInButton
+                  mode="modal"
+                  appearance={{
+                    theme:
+                      resolvedTheme === "dark" ? dark : experimental__simple,
+                  }}
+                >
+                  <motion.button
+                    whileHover={{ scale: 1.06 }}
+                    whileTap={{ scale: 0.94 }}
+                    className="hover:bg-transparent border font-medium border-yellow-500 text-black hover:text-yellow-500 bg-yellow-500 p-2 rounded-2xl  cursor-pointer"
+                  >
+                    Sign In
+                  </motion.button>
+                </SignInButton>
+              )
+            ) : (
+              <button className="hover:bg-transparent border font-medium border-yellow-500 text-black hover:text-yellow-500 bg-yellow-500 p-2 rounded-2xl  cursor-pointer">
+                Loading
+              </button>
+            )}
             <Button
               className="flex items-center justify-center md:hidden"
               onClick={() => setMenu(!menu)}
@@ -60,7 +85,7 @@ const Navbar = () => {
         {menu && (
           <motion.div
             {...FadeDownAnimation}
-            className="absolute top-20 md:hidden left-0 bg-white/60 dark:bg-black/60 w-full z-0 space-y-5 pt-10 py-5 z-40"
+            className="fixed top-20 md:hidden left-0 bg-white/60 dark:bg-black/60 w-full z-0 space-y-5 pt-10 py-5 z-40"
           >
             {Main.map((item) => (
               <Link

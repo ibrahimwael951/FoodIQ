@@ -15,7 +15,11 @@ interface Props {
   pageSize?: number;
   hideLastCard?: boolean;
 }
-export default function FoodList({ maxPages, pageSize, hideLastCard }: Props) {
+export default function FoodList({
+  maxPages,
+  pageSize = 10,
+  hideLastCard,
+}: Props) {
   const [foods, setFoods] = useState<FoodProduct[]>([]);
   const [page, setPage] = useState(1);
   const [error, setError] = useState<string | null>(null);
