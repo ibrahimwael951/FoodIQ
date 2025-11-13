@@ -11,6 +11,7 @@ interface props {
   children?: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   href?: string;
+  type?: "button" | "submit" | "reset";
   Animate?: boolean;
   changeColor?: boolean;
 }
@@ -22,6 +23,7 @@ const Button: React.FC<props> = ({
   Animate = false,
   changeColor,
   onClick,
+  type,
 }) => {
   const route = useRouter();
   const animationProps = Animate ? FadeUp : {};
@@ -41,12 +43,13 @@ const Button: React.FC<props> = ({
       }}
       whileTap={{ scale: 0.96 }}
       transition={{ duration: 0.2 }}
+      type={type}
       onClick={handleClick}
       className={cn(
         `group relative px-5 py-3 border  rounded-2xl overflow-hidden 
           ${
             changeColor
-              ? "bg-secondary border-secondary hover:border-primary"
+              ? "bg-secondary border-secondary hover:border-primary text-white"
               : "border-neutral-300/80 dark:border-white/20 hover:border-secondary"
           } 
           `,
