@@ -87,12 +87,15 @@ export default function Page() {
             </motion.div>
           )}
         </AnimatePresence>
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {loading ? (
-            <div className=" w-full h-96 max-w-2xl flex flex-col justify-center items-center gap-4 text-3xl">
+            <motion.div
+              {...FadeUpAnimation}
+              className=" w-full h-96 max-w-2xl flex flex-col justify-center items-center gap-4 text-3xl"
+            >
               <div className="w-28 h-28 border border-secondary border-t-transparent animate-spin rounded-full"></div>
               Loading...
-            </div>
+            </motion.div>
           ) : (
             <motion.form
               {...FadeUpAnimation}

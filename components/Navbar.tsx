@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { BiMenu } from "react-icons/bi";
 import { useTheme } from "next-themes";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const pathName = usePathname();
@@ -43,13 +44,15 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-
-          <Button
-            className="flex items-center justify-center md:hidden"
-            onClick={() => setMenu(!menu)}
-          >
-            <BiMenu size={30} />
-          </Button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />  
+            <Button
+              className="flex items-center justify-center md:hidden"
+              onClick={() => setMenu(!menu)}
+            >
+              <BiMenu size={30} />
+            </Button>
+          </div>
         </div>
       </motion.nav>
       <AnimatePresence>

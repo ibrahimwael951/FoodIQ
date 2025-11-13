@@ -14,9 +14,5 @@ export default function ThemeToggle() {
 
   const nextTheme = resolvedTheme === "dark" ? "light" : "dark";
 
-  return (
-    <Button onClick={() => setTheme(nextTheme)}>
-      Switch to {nextTheme} mode
-    </Button>
-  );
+  return <Button onClick={() => setTheme(nextTheme)} changeColor>{nextTheme} mode</Button>;
 }

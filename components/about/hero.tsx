@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import React from "react";
+
 import { BiLocationPlus, BiPhone } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
 
@@ -9,14 +8,12 @@ const Hero = () => {
   return (
     <section className="flex flex-col lg:flex-row justify-center items-center gap-10 mt-20 lg:mt-0 lg:gap-14 max-w-2xl lg:max-w-7xl mx-auto">
       <div className="relative w-full lg:w-2/4 mb-10 ">
-        <Image
-          src="/Food/About_hero_food.avif"
+        <img
+          src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3V3c2RrNGQ3eTlpbndpODgxdmZqMzlibjNudjk3emdlemp1emNjeSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/w5UGdHEKT7uU0/giphy.gif"
           alt="About_hero_food"
-          height={1000}
-          width={1000}
           className="rounded-2xl h-[450px] w-4/5 object-cover"
         />
-        <div className="absolute -bottom-16 -right-4 md:-right-10 w-80 md:w-96 h-72 md:h-80 bg-primary rounded-3xl p-5 text-white flex flex-col justify-evenly items-start gap-5">
+        <div className="absolute -bottom-16 -right-4 md:-right-10 w-80 md:w-96 h-72 md:h-80 bg-primary rounded-3xl p-5 text-white flex flex-col justify-evenly items-start gap-5 opacity-70 ">
           <h3>Connect Us</h3>
           <span className="flex items-center gap-2 text-xl opacity-75">
             <BiPhone />

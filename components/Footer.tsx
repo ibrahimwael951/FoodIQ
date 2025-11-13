@@ -39,6 +39,15 @@ const Footer = () => {
               </motion.div>
             ))}
           </div>
+          <h5>
+            Made By{" "}
+            <a
+              href="https://ibrlolportfoli.vercel.app/"
+              className="text-secondary font-bold hover:border-secondary border-b-2 border-transparent"
+            >
+              Apolo
+            </a>
+          </h5>
         </div>
 
         {/* second col */}
