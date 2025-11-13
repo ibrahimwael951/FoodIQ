@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { Api, FoodProduct } from "@/lib/Type";
+import { FoodProductsApi, FoodProduct } from "@/lib/Type";
 import { BiError } from "react-icons/bi";
 import {
   Fade,
@@ -24,7 +24,7 @@ export default function FoodPage() {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`${Api}/product/${id}.json`);
+        const res = await axios.get(`${FoodProductsApi}/product/${id}.json`);
         if (res.data.status === 0) {
           setError("Product not found or invalid barcode");
         } else {

@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { FoodProduct } from "@/lib/Type";
 import { FadeEveryTime, FadeUp } from "@/lib/Animation";
-import Button from "../ui/Button";
+import Button from "./ui/Button";
 import Link from "next/link";
 import { BiError } from "react-icons/bi";
 import { GiOpenedFoodCan } from "react-icons/gi";
@@ -33,7 +33,6 @@ export default function FoodList({ maxPages, pageSize, hideLastCard }: Props) {
         );
         const validFoods = res.data.filter((f: FoodProduct) => f.code);
         setFoods((prev) => [...prev, ...validFoods]);
-        setLoading(false);
       } catch (err) {
         console.log(err);
         setError("Failed to fetch product");
@@ -62,7 +61,7 @@ export default function FoodList({ maxPages, pageSize, hideLastCard }: Props) {
       </section>
     );
   return (
-    <section>
+    <section className="min-h-fit!">
       <h1 className="mb-5 flex items-center gap-2">
         <GiOpenedFoodCan className="text-secondary" />
         Food Products

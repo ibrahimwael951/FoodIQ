@@ -4,16 +4,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IoFastFoodOutline } from "react-icons/io5";
 import Button from "./ui/Button";
-import { useTheme } from "next-themes";
 import { FadeDownAnimation } from "@/lib/Animation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { BiMenu } from "react-icons/bi";
-import { ClerkLoading, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const pathName = usePathname();
-  const { setTheme, resolvedTheme } = useTheme();
+  const { user, isSignedIn, isLoaded } = useUser();
   const [menu, setMenu] = useState<boolean>(false);
 
   return (
@@ -44,25 +44,9 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-          {/* <Button
-            onClick={() =>
-              setTheme(resolvedTheme === "dark" ? "light" : "dark")
-            }
-          >
-            {`set ${resolvedTheme === "dark" ? "light" : "dark"} theme ?`}
-          </Button> */}
+          <ThemeToggle />
           <div className="flex items-center gap-2">
-            <SignedIn>
-              <Button href={pathName === "/dashboard" ? "/" : "/dashboard"}>
-                {pathName === "/dashboard" ? "Home" : "Dashboard"}
-              </Button>
-            </SignedIn>
-            <SignedOut>
-              <Button href="/sign-in">Sign in</Button>
-            </SignedOut>
-            <ClerkLoading>
-              <Button>Loading...</Button>
-            </ClerkLoading>
+            
             <Button
               className="flex items-center justify-center md:hidden"
               onClick={() => setMenu(!menu)}
