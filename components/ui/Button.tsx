@@ -12,6 +12,7 @@ interface props {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   href?: string;
   Animate?: boolean;
+  changeColor?: boolean;
 }
 const Button: React.FC<props> = ({
   href,
@@ -19,6 +20,7 @@ const Button: React.FC<props> = ({
   children,
   hoverDivStyle,
   Animate = false,
+  changeColor,
   onClick,
 }) => {
   if (href)
@@ -29,6 +31,7 @@ const Button: React.FC<props> = ({
           hoverDivStyle={hoverDivStyle}
           onClick={onClick}
           Animate={Animate}
+          changeColor={changeColor}
         >
           {children}
         </Button>
@@ -47,7 +50,13 @@ const Button: React.FC<props> = ({
         transition={{ duration: 0.2 }}
         onClick={onClick}
         className={cn(
-          "group relative px-5 py-3 border border-neutral-300/80 dark:border-white/20 hover:border-secondary rounded-2xl overflow-hidden  ",
+          `group relative px-5 py-3 border  rounded-2xl overflow-hidden 
+          ${
+            changeColor
+              ? "bg-secondary border-secondary hover:border-primary"
+              : "border-neutral-300/80 dark:border-white/20 hover:border-secondary"
+          }
+          `,
           className
         )}
       >
@@ -61,7 +70,9 @@ const Button: React.FC<props> = ({
           }}
           transition={{ duration: 0.2 }}
           className={cn(
-            "absolute bottom-0 right-0 h-[120%] w-[120%] bg-secondary rounded-2xl z-0",
+            `absolute bottom-0 right-0 h-[120%] w-[120%] ${
+              changeColor ? " bg-primary " : " bg-secondary "
+            } rounded-2xl z-0`,
             hoverDivStyle
           )}
         />

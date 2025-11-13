@@ -108,7 +108,6 @@ export default function FoodPage() {
           {product.quantity || "N/A"}
         </p>
 
-        {/* Categories */}
         <div className="flex flex-col ">
           <span className="text-secondary text-2xl mb-2">Categories: </span>{" "}
           <div className="flex flex-wrap items-center gap-2">
@@ -124,7 +123,6 @@ export default function FoodPage() {
           </div>
         </div>
 
-        {/* countries */}
         <div className="flex flex-col ">
           <span className="text-secondary text-2xl mb-2">Countries: </span>{" "}
           <div className="flex flex-wrap items-center gap-2">

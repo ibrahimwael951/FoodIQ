@@ -14,12 +14,20 @@ export const FadeUp = {
   whileInView: { ...visible },
   exit: { y: 60, opacity: 0 },
   viewport: defaultViewport,
+  transition: { duration: 0.2 },
 };
 export const Fade = {
   initial: { opacity: 0 },
   whileInView: { ...visible },
   exit: { opacity: 0 },
   viewport: defaultViewport,
+  transition: { duration: 0.2 },
+};
+export const FadeAnimation = {
+  initial: { opacity: 0 },
+  animate: { ...visible },
+  exit: { opacity: 0 },
+  transition: { duration: 0.2 },
 };
 export const FadeEveryTime = {
   initial: { opacity: 0 },

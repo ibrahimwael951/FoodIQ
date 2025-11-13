@@ -3,7 +3,7 @@ import { Main } from "@/data/MainLinks";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IoFastFoodOutline } from "react-icons/io5";
-import Button from "../ui/Button";
+import Button from "./ui/Button";
 import { useTheme } from "next-themes";
 import { FadeDownAnimation } from "@/lib/Animation";
 import { AnimatePresence, motion } from "framer-motion";
@@ -58,9 +58,9 @@ const Navbar = () => {
       </motion.nav>
       <AnimatePresence>
         {menu && (
-          <motion.div
+          <motion.div 
             {...FadeDownAnimation}
-            className="absolute top-30 md:hidden left-0 bg-white/60 dark:bg-black/60 w-full z-0 space-y-5 py-5"
+            className="absolute top-20 md:hidden left-0 bg-white/60 dark:bg-black/60 w-full z-0 space-y-5 pt-10 py-5 z-40"
           >
             {Main.map((item) => (
               <Link
