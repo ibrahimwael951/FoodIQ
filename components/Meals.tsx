@@ -12,8 +12,9 @@ import Link from "next/link";
 
 interface Props {
   pageSize?: number;
+  showSeeMoreBTN?: boolean;
 }
-export default function MealsList({ pageSize = 5 }: Props) {
+export default function MealsList({ pageSize = 5, showSeeMoreBTN }: Props) {
   const [meals, setMeals] = useState<Meal[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -47,10 +48,17 @@ export default function MealsList({ pageSize = 5 }: Props) {
   const MaxMeals = meals.slice(1, pageSize + 1);
   return (
     <section className="min-h-fit!">
-      <h1 className="mb-5 flex items-center gap-2">
-        <GiHotMeal className="text-secondary" />
-        Meals
-      </h1>
+      <div className="flex items-center justify-between gap-2">
+        <h1 className="mb-5 flex items-center gap-2">
+          <GiHotMeal className="text-secondary" />
+          Meals
+        </h1>
+        {showSeeMoreBTN && (
+          <Button href="/menu" changeColor>
+            See More?
+          </Button>
+        )}
+      </div>
       <div className="grid  md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 2xl gap-4 p-4">
         {MaxMeals.map((item, index) => {
           return (

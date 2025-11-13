@@ -3,6 +3,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import Button from "./ui/Button";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 export default function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -14,5 +15,9 @@ export default function ThemeToggle() {
 
   const nextTheme = resolvedTheme === "dark" ? "light" : "dark";
 
-  return <Button onClick={() => setTheme(nextTheme)} changeColor>{nextTheme} mode</Button>;
+  return (
+    <Button onClick={() => setTheme(nextTheme)} changeColor className="h-12">
+      {resolvedTheme === "dark" ? <FaSun /> : <FaMoon />}
+    </Button>
+  );
 }

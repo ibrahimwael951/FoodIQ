@@ -6,6 +6,7 @@ import {
   MdFreeBreakfast,
   MdLunchDining,
   MdOutlineMenuBook,
+  MdProductionQuantityLimits,
 } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 
@@ -18,6 +19,7 @@ export const Main: Links[] = [
   { name: "Home", href: "/", icon: IoHome },
   { name: "About", href: "/about", icon: BsInfoLg },
   { name: "Menu", href: "/menu", icon: MdOutlineMenuBook },
+  { name: "Products", href: "/food", icon: MdProductionQuantityLimits },
   { name: "Contact", href: "/contact", icon: RiContactsFill },
 ];
 

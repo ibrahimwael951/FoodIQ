@@ -83,7 +83,9 @@ const Footer = () => {
         </div>
         {/* third col */}
         <div>
-          <h5 className="mb-2">Follow Us On Instagram</h5>
+          <h5 className="mb-2">
+            are you hungry? <div className="span text-secondary">me too</div>{" "}
+          </h5>
           <div className="grid grid-cols-2 gap-2">
             {[
               "/Food/Classic_mael.webp",

@@ -8,9 +8,9 @@ export default function Page() {
   return (
     <main className="space-y-10">
       <Hero />
-      <MealsList pageSize={4} />
+      <MealsList pageSize={4} showSeeMoreBTN/>
       <HowManyMealDidYouEat/>
-      {/* <FoodList maxPages={1} pageSize={4} hideLastCard /> */}
+      <FoodList maxPages={1} pageSize={4} hideLastCard />
       <FAQ />
     </main>
   );

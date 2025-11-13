@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "next/navigation";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { MealsApi, Meal } from "@/lib/Type";
-import { BiError } from "react-icons/bi";
+import { BiError, BiX } from "react-icons/bi";
 import {
+  Fade,
   FadeLeftAnimation,
   FadeRightAnimation,
   FadeUpAnimation,
@@ -18,6 +19,7 @@ export default function FoodPage() {
   const [meal, setMeal] = useState<Meal | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [Soon, setSoon] = useState<boolean>(false);
 
   useEffect(() => {
     if (!id) return;
@@ -83,9 +85,20 @@ export default function FoodPage() {
           </motion.div>
         )}
         <div className="flex items-center justify-center gap-5">
-          <Button changeColor> Love</Button>
-          <Button> Comment</Button>
-          <Button> Save</Button>
+          <Button changeColor onClick={() => setSoon(true)}>
+            {" "}
+            Love
+          </Button>
+          <Button onClick={() => setSoon(true)}> Comment</Button>
+          <Button onClick={() => setSoon(true)}> Save</Button>
+        </div>
+        <div className="flex items-center gap-5 bg-primary p-2 rounded-2xl">
+          <img
+            src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDcxcW5xbTc2eHN6emVmbmN6amc3NmZ2dHloZ3c5cmN4a3B4czQybiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/tIeCLkB8geYtW/giphy.gif"
+            alt=""
+            className="w-20 h-20 object-cover rounded-3xl"
+          />
+          <p className="text-white!">Looks Great, right ?</p>{" "}
         </div>
       </div>
       <motion.div {...FadeRightAnimation} className="space-y-5">
@@ -196,6 +209,38 @@ export default function FoodPage() {
           </p>
         </div>
       </motion.div>
+
+      <AnimatePresence>
+        {Soon && (
+          <motion.section
+            {...Fade}
+            className="fixed top-0 left-0 w-full h-screen bg-black/50 flex justify-center items-center z-50"
+          >
+            <motion.div
+              {...FadeUpAnimation}
+              className="relative p-16 bg-primary min-h-70 text-white text-center rounded-3xl max-w-3xl flex flex-col justify-center items-center gap-3 overflow-hidden"
+            >
+              <Button
+                changeColor
+                className="absolute top-0 right-0 text-3xl rounded-none rounded-bl-3xl"
+                onClick={() => setSoon(false)}
+              >
+                <BiX />
+              </Button>
+              <img
+                src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3Y3YTNvbmxibHJ1ejNmaWp4a3o5Y3pwa2Z2aThxOWZ4bHRndHNocyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/4K1KI9R2VDrLVcpiBG/giphy.gif"
+                alt=""
+              />
+              <h3>
+                im not{" "}
+                <span className="text-secondary font-bold">SuperHero</span> to
+                make this function in{" "}
+                <span className="text-secondary font-bold">2 days</span>{" "}
+              </h3>
+            </motion.div>
+          </motion.section>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

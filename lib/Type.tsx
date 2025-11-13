@@ -1,14 +1,24 @@
 export interface FoodProduct {
   id?: string;
+  url?: string;
   product_name?: string;
   brands?: string;
   barcode?: string;
   code: string;
   image_front_url?: string;
+  image_url?: string;
+  image_front_small_url?: string;
+  image_front_thumb_url?: string;
+  image_small_url?: string;
+  image_thumb_url?: string;
   image_ingredients_url?: string;
   image_nutrition_url?: string;
   countries?: string;
+  countries_tags?: string[];
+  packaging_tags?: string[];
   categories?: string;
+  categories_tags?: string[];  
+  _keywords?: string[];
   nutriscore_grade?: string;
   quantity?: string;
 }
