@@ -63,27 +63,15 @@ export default function FoodPage() {
       </div>
     );
 
-  const countriesRaw = product.countries || "";
-  const countriesList = countriesRaw
-    .split(",")
-    .map((c) => c.trim())
-    .filter((c) => c.length > 0);
-
-  const categoriesRaw = product.categories || "";
-  const categoriesList = categoriesRaw
-    .split(",")
-    .map((c) => c.trim())
-    .filter((c) => c.length > 0);
-
   return (
     <section className="mt-24 w-full max-w-7xl mx-auto p-4 grid md:grid-cols-2 gap-10 mb-20">
-      <div className="w-full flex flex-col justify-center items-center gap-4 max-w-96 md:max-w-xl mx-auto">
+      <div className="w-full flex flex-col justify-center items-center gap-4 max-w-96 md:max-w-xl mx-auto rounded-3xl overflow-hidden">
         {product.image_front_url ? (
           <motion.img
             {...FadeLeftAnimation}
             src={product.image_front_url}
             alt={product.product_name || "Unknown"}
-            className="w-full h-auto  object-cover rounded "
+            className="w-full h-full  object-cover"
           />
         ) : (
           <motion.div
@@ -99,84 +87,121 @@ export default function FoodPage() {
         <h1 className="text-2xl font-bold mb-4 line-clamp-2">
           {product.product_name}
         </h1>
-        <p>
-          <span className="text-secondary text-2xl">Brand: </span>{" "}
-          {product.brands || "Unknown"}
-        </p>
-        <p>
-          <span className="text-secondary text-2xl">Quantity: </span>{" "}
-          {product.quantity || "N/A"}
-        </p>
-
-        <div className="flex flex-col ">
-          <span className="text-secondary text-2xl mb-2">Categories: </span>{" "}
-          <div className="flex flex-wrap items-center gap-2">
-            {categoriesList.map((item, i) => (
-              <motion.div
-                key={i + item}
-                {...Fade}
-                className="bg-secondary text-black font-semibold text-xl p-2 rounded-2xl hover:-translate-y-0.5 duration-100 cursor-default"
-              >
-                {item.slice(3)}
-              </motion.div>
-            )) || "N/A"}
-          </div>
+        <div className="flex items-end gap-2">
+          <h4 className="text-primary dark:text-white font-bold inline text-2xl">
+            Brand:{" "}
+          </h4>{" "}
+          <p className="font-bold text-secondary! text-lg!">
+            {product.brands || "Unknown"}
+          </p>
+        </div>
+        <div className="flex items-end gap-2">
+          <h4 className="text-primary dark:text-white font-bold inline text-2xl">
+            Quantity:{" "}
+          </h4>{" "}
+          <p className="font-bold text-secondary! text-lg!">
+            {product.quantity || "N/A"}
+          </p>
+        </div>
+        <div className="flex items-end gap-2">
+          <h4 className="text-primary dark:text-white font-bold inline text-2xl">
+            Nutri-Sco re:
+          </h4>{" "}
+          <p className="font-bold text-secondary! text-lg!">
+            {product.nutriscore_grade?.toUpperCase() || "N/A"}
+          </p>
         </div>
 
-        <div className="flex flex-col ">
-          <span className="text-secondary text-2xl mb-2">Countries: </span>{" "}
-          <div className="flex flex-wrap items-center gap-2">
-            {countriesList.map((item, i) => (
-              <motion.div
-                key={i + item}
-                {...Fade}
-                className="bg-secondary text-black font-semibold text-xl p-2 rounded-2xl hover:-translate-y-0.5 duration-100 cursor-default"
-              >
-                {item}
-              </motion.div>
-            )) || "N/A"}
+        {product.categories_tags && (
+          <div className="flex flex-col ">
+            <h4 className="text-primary dark:text-white font-bold text-2xl mb-3">
+              Categories:{" "}
+            </h4>{" "}
+            <div className="flex flex-wrap items-center gap-2">
+              {product.categories_tags.map((item, i) => (
+                <motion.div
+                  key={i + item}
+                  {...Fade}
+                  className="border border-secondary hover:text-white hover:bg-secondary font-semibold text-xl p-2 rounded-2xl hover:-translate-y-0.5 duration-100 cursor-default"
+                >
+                  {item.slice(3)}
+                </motion.div>
+              )) || "N/A"}
+            </div>
           </div>
-        </div>
-        <p>
-          <span className="text-secondary text-2xl">Nutri-Sco re:</span>{" "}
-          {product.nutriscore_grade?.toUpperCase() || "N/A"}
-        </p>
+        )}
+        {product.countries_tags && (
+          <div className="flex flex-col ">
+            <h4 className="text-primary dark:text-white font-bold text-2xl mb-3">
+              Countries:{" "}
+            </h4>{" "}
+            <div className="flex flex-wrap items-center gap-2">
+              {product.countries_tags.map((item, i) => (
+                <motion.div
+                  key={i + item}
+                  {...Fade}
+                  className="border border-secondary hover:text-white hover:bg-secondary font-semibold text-xl p-2 rounded-2xl hover:-translate-y-0.5 duration-100 cursor-default"
+                >
+                  {item.slice(3)}
+                </motion.div>
+              )) || "N/A"}
+            </div>
+          </div>
+        )}
+        {product._keywords && (
+          <div className="flex flex-col justify-center items-start">
+            <h4 className="text-primary dark:text-white font-bold text-2xl mb-3">
+              Keys:{" "}
+            </h4>{" "}
+            <div className="flex flex-wrap items-center gap-2">
+              {product._keywords.map((item, i) => (
+                <motion.div
+                  key={i + item}
+                  {...Fade}
+                  className="border border-secondary font-semibold text-lg p-3 rounded-2xl hover:text-white hover:bg-secondary hover:-translate-y-0.5 duration-100 cursor-default"
+                >
+                  {item}
+                </motion.div>
+              )) || "N/A"}
+            </div>
+          </div>
+        )}
       </motion.div>
       <div className="w-full">
-        <h3 className="mb-2 text-secondary font-semibold ">Nutrition</h3>
+        <h3 className="text-secondary font-semibold mb-4">Nutrition</h3>
         {product.image_nutrition_url ? (
           <motion.img
             {...FadeLeftAnimation}
             src={product.image_nutrition_url}
             alt={product.product_name || "Unknown"}
-            className="w-full h-auto  object-cover rounded max-w-96 md:max-w-xl mx-auto"
+            className="w-full h-96 object-cover max-w-xl md:max-w-xl mx-auto rounded-3xl"
           />
         ) : (
           <motion.div
             {...FadeLeftAnimation}
-            className="bg-secondary/50 w-full h-80 flex flex-col justify-center items-center text-center rounded"
+            className="bg-secondary/50 w-full h-96 max-w-xl mx-auto flex flex-col justify-center items-center text-center rounded-3xl "
           >
-            <h4>404</h4>
-            No Image Found
+            <h2>404</h2>
+            <h4>No Image Found</h4>
           </motion.div>
         )}
       </div>
       <div className="w-full">
-        <h3 className="mb-2 text-secondary font-semibold ">Ingredients</h3>
+        <h3 className="text-secondary font-semibold mb-4">Ingredients</h3>
         {product.image_ingredients_url ? (
           <motion.img
             {...FadeLeftAnimation}
             src={product.image_ingredients_url}
             alt={product.product_name || "Unknown"}
-            className="w-full h-auto  object-cover rounded max-w-96 md:max-w-xl mx-auto"
+            className="w-full h-96 object-cover max-w-xl md:max-w-xl mx-auto rounded-3xl"
           />
         ) : (
           <motion.div
             {...FadeLeftAnimation}
-            className="bg-secondary/50 w-full h-80 flex flex-col justify-center items-center text-center rounded"
+            className="bg-secondary/50 w-full h-96 max-w-xl mx-auto flex flex-col justify-center items-center text-center rounded-3xl"
           >
-            <h4>404</h4>
-            No Image Found
+            <h2>404</h2>
+            <h4>No Image Found</h4>
           </motion.div>
         )}
       </div>

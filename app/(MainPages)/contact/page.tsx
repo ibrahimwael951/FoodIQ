@@ -47,7 +47,7 @@ export default function Page() {
   }
 
   return (
-    <section className="mt-20 lg:mt-0 flex justify-center items-center">
+    <section className="my-20 flex justify-center items-center">
       <div className="flex flex-col gap-8 justify-center h-full items-center w-full">
         <motion.h1 {...FadeUpAnimation} className="font-bold">
           Contact <span className="text-secondary"> Form </span> {error}
@@ -87,80 +87,89 @@ export default function Page() {
             </motion.div>
           )}
         </AnimatePresence>
-        <AnimatePresence mode="wait">
-          {loading ? (
-            <motion.div
-              {...FadeUpAnimation}
-              className=" w-full h-96 max-w-2xl flex flex-col justify-center items-center gap-4 text-3xl"
-            >
-              <div className="w-28 h-28 border border-secondary border-t-transparent animate-spin rounded-full"></div>
-              Loading...
-            </motion.div>
-          ) : (
-            <motion.form
-              {...FadeUpAnimation}
-              onSubmit={handleSubmit}
-              className="relative flex flex-col justify-center gap-2 w-full max-w-2xl "
-            >
-              <div className="flex flex-col md:flex-row gap-2 w-full ">
-                <div className="w-full md:w-2/4">
-                  <motion.label>Your Full Name</motion.label>
-                  <motion.input
-                    required
-                    name="name"
-                    {...FadeUpAnimation}
-                    whileFocus={{ scale: 1.01 }}
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    type="text"
-                    placeholder="Your Name"
-                    className="w-full border-2 border-secondary rounded-xl py-4 px-5 text-xl outline-none disabled:bg-secondary disabled:text-white"
-                  />
-                </div>
-                <div className="w-full md:w-2/4">
-                  <motion.label>Your Email</motion.label>
-                  <motion.input
-                    required
-                    name="email"
-                    {...FadeUpAnimation}
-                    whileFocus={{ scale: 1.01 }}
-                    type="text"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Your Email"
-                    className="w-full border-2 border-secondary rounded-xl py-4 px-5 text-xl outline-none disabled:bg-secondary disabled:text-white"
-                  />
-                </div>
-              </div>
-              <div className="relative w-full ">
-                <motion.textarea
-                  required
-                  name="message"
-                  value={message}
-                  {...FadeUpAnimation}
-                  onChange={(e) => setMessage(e.target.value)}
-                  whileFocus={{ scale: 1.01 }}
-                  placeholder="Your Message"
-                  className="border-2 border-secondary rounded-2xl p-2 outline-none min-h-40 max-h-52 w-full"
-                  maxLength={500}
-                />
-                <p className="absolute bottom-4 left-0 flex justify-between items-center w-full text-xs! px-5">
-                  {" "}
-                  <span>Max Message Length</span> {message.length} / 500{" "}
-                </p>
-              </div>
-              <motion.div {...FadeUpAnimation}>
-                <Button
-                  type="submit"
-                  changeColor
-                  className="p-4 w-full  rounded-2xl uppercase font-semibold text-xl z-0"
-                >
-                  Submit
-                </Button>
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-5 lg:gap-10 max-w-7xl mx-auto">
+          <AnimatePresence mode="wait">
+            {loading ? (
+              <motion.div
+                {...FadeUpAnimation}
+                className=" w-full h-96 max-w-2xl flex flex-col justify-center items-center gap-4 text-3xl"
+              >
+                <div className="w-28 h-28 border border-secondary border-t-transparent animate-spin rounded-full"></div>
+                Loading...
               </motion.div>
-            </motion.form>
-          )}
-        </AnimatePresence>
+            ) : (
+              <>
+                <motion.img
+                  src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3cGp2emp6MG5ub2NzYWdhZ3g3cjJ2eHRhZjl3YnF0aTEyNnhwMzhoYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/g9VzKQRrHBOdiTh7sb/giphy.gif"
+                  alt="be nice image"
+                  className="rounded-3xl w-full max-w-xl mx-auto"
+                />
+                <motion.form
+                  {...FadeUpAnimation}
+                  onSubmit={handleSubmit}
+                  className="relative flex flex-col justify-center gap-2 w-full max-w-2xl "
+                >
+                  <div className="flex flex-col md:flex-row gap-2 w-full ">
+                    <div className="w-full md:w-2/4">
+                      <motion.label>Your Full Name</motion.label>
+                      <motion.input
+                        required
+                        name="name"
+                        {...FadeUpAnimation}
+                        whileFocus={{ scale: 1.01 }}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        type="text"
+                        placeholder="Your Name"
+                        className="w-full border-2 border-secondary rounded-xl py-4 px-5 text-xl outline-none disabled:bg-secondary disabled:text-white"
+                      />
+                    </div>
+                    <div className="w-full md:w-2/4">
+                      <motion.label>Your Email</motion.label>
+                      <motion.input
+                        required
+                        name="email"
+                        {...FadeUpAnimation}
+                        whileFocus={{ scale: 1.01 }}
+                        type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Your Email"
+                        className="w-full border-2 border-secondary rounded-xl py-4 px-5 text-xl outline-none disabled:bg-secondary disabled:text-white"
+                      />
+                    </div>
+                  </div>
+                  <div className="relative w-full ">
+                    <motion.textarea
+                      required
+                      name="message"
+                      value={message}
+                      {...FadeUpAnimation}
+                      onChange={(e) => setMessage(e.target.value)}
+                      whileFocus={{ scale: 1.01 }}
+                      placeholder="Your Message"
+                      className="border-2 border-secondary rounded-2xl p-2 outline-none min-h-40 max-h-52 w-full"
+                      maxLength={500}
+                    />
+                    <p className="absolute bottom-4 left-0 flex justify-between items-center w-full text-xs! px-5">
+                      {" "}
+                      <span>Max Message Length</span> {message.length} / 500{" "}
+                    </p>
+                  </div>
+                  <motion.div {...FadeUpAnimation}>
+                    <Button
+                      type="submit"
+                      changeColor
+                      className="p-4 w-full  rounded-2xl uppercase font-semibold text-xl z-0"
+                    >
+                      Submit
+                    </Button>
+                  </motion.div>
+                </motion.form>
+              </>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );

@@ -291,6 +291,7 @@ export default function FoodList({
                   changeColor
                   href={`/food/${showFood.code}`}
                   className="text-2xl"
+                  onClick={() => setShowFood(null)}
                 >
                   More Details
                 </Button>
