@@ -82,6 +82,12 @@ export interface Meal {
   strMeasure19: string;
   strMeasure20: string;
 }
+export interface MealCategories {
+  idCategory: string;
+  strCategory: string;
+  strCategoryThumb: string;
+  strCategoryDescription: string;
+}
 
 export const FoodProductsApi = process.env.NEXT_PUBLIC_FOOD_API;
 export const MealsApi = process.env.NEXT_PUBLIC_MEALS_API;

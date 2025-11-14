@@ -24,7 +24,7 @@ export const Main: Links[] = [
 ];
 
 export const utilityPages: Links[] = [
-  { name: "Breakfast", href: "/breakfast", icon: MdFreeBreakfast },
-  { name: "Dinner", href: "/dinner", icon: MdDinnerDining },
-  { name: "Lunch", href: "/lunch", icon: MdLunchDining },
+  { name: "Breakfast", href: "/menu", icon: MdFreeBreakfast },
+  { name: "Dinner", href: "/menu", icon: MdDinnerDining },
+  { name: "Lunch", href: "/menu", icon: MdLunchDining },
 ];
