@@ -1,5 +1,5 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "@/components/ui/Button";
 import { FadeUpAnimation } from "@/lib/Animation";
@@ -45,6 +45,13 @@ export default function Page() {
       setLoading(false);
     }
   }
+  useEffect(() => {
+    if (error || success) {
+      window.document.body.style.overflow = "hidden";
+    } else {
+      window.document.body.style.overflow = "auto";
+    }
+  }, [success, error]);
 
   return (
     <section className="my-20 flex justify-center items-center">
@@ -72,18 +79,22 @@ export default function Page() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed top-0 left-0 w-full h-full flex flex-col justify-center gap-5 items-center bg-primary text-white z-40"
+              className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black/70 z-40"
             >
-              <h4 className="text-2xl font-semibold">
-                Something went wrong :(
-              </h4>
-              <p className="text-lg text-white!">
-                <span className="text-red-500 font-bold text-xl">Error: </span>
-                {error}
-              </p>
-              <Button onClick={() => setError("")} className="text-white n">
-                try Again
-              </Button>
+              <div className="p-10 flex flex-col justify-center gap-5 items-center bg-white dark:bg-black rounded-3xl border border-neutral-500/70">
+                <h4 className="text-2xl font-semibold">
+                  Something went wrong :(
+                </h4>
+                <p className="text-lg ">
+                  <span className="text-red-500 font-bold text-xl">
+                    Error:{" "}
+                  </span>
+                  {error}
+                </p>
+                <Button onClick={() => setError("")} changeColor>
+                  try Again
+                </Button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -100,6 +111,7 @@ export default function Page() {
             ) : (
               <>
                 <motion.img
+                  {...FadeUpAnimation}
                   src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3cGp2emp6MG5ub2NzYWdhZ3g3cjJ2eHRhZjl3YnF0aTEyNnhwMzhoYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/g9VzKQRrHBOdiTh7sb/giphy.gif"
                   alt="be nice image"
                   className="rounded-3xl w-full max-w-xl mx-auto"
@@ -165,6 +177,15 @@ export default function Page() {
                       Submit
                     </Button>
                   </motion.div>
+                  <p className="text-center">
+                    if its won't work you can contact me in :{" "}
+                    <a
+                      href="https://ibrlolportfoli.vercel.app/#Contact"
+                      className="border-b border-secondary hover:border-b-2 text-secondary hover:tracking-wide duration-100"
+                    >
+                      Apolo Website
+                    </a>
+                  </p>
                 </motion.form>
               </>
             )}

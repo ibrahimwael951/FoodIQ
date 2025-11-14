@@ -9,7 +9,7 @@ interface props {
   className?: string;
   hoverDivStyle?: string;
   children?: React.ReactNode;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: () => void;
   href?: string;
   type?: "button" | "submit" | "reset";
   Animate?: boolean;
@@ -28,8 +28,8 @@ const Button: React.FC<props> = ({
   const route = useRouter();
   const animationProps = Animate ? FadeUp : {};
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (onClick) onClick(event);
+  const handleClick = () => {
+    if (onClick) onClick();
     if (href) route.push(href);
   };
   return (

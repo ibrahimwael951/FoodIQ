@@ -112,13 +112,13 @@ export default function FoodPage() {
           </p>
         </div>
 
-        {product.categories_tags && (
+        {product.countries_tags && (
           <div className="flex flex-col ">
             <h4 className="text-primary dark:text-white font-bold text-2xl mb-3">
-              Categories:{" "}
+              Countries:{" "}
             </h4>{" "}
             <div className="flex flex-wrap items-center gap-2">
-              {product.categories_tags.map((item, i) => (
+              {product.countries_tags.map((item, i) => (
                 <motion.div
                   key={i + item}
                   {...Fade}
@@ -130,13 +130,14 @@ export default function FoodPage() {
             </div>
           </div>
         )}
-        {product.countries_tags && (
+
+        {product.categories_tags && (
           <div className="flex flex-col ">
             <h4 className="text-primary dark:text-white font-bold text-2xl mb-3">
-              Countries:{" "}
+              Categories:{" "}
             </h4>{" "}
             <div className="flex flex-wrap items-center gap-2">
-              {product.countries_tags.map((item, i) => (
+              {product.categories_tags.map((item, i) => (
                 <motion.div
                   key={i + item}
                   {...Fade}
