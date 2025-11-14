@@ -3,8 +3,8 @@ import { FadeUp } from "@/lib/Animation";
 import { motion } from "framer-motion";
 const FAQs = [
   {
-    Q: "What is Foodie Doing ?",
-    A: "Foodie its just a web :)",
+    Q: "What is FoodIQ Doing ?",
+    A: "FoodIQ its just a web :)",
   },
   {
     Q: "what do you mean by just web ?",
@@ -47,7 +47,7 @@ const FAQ = () => {
             {...FadeUp}
             className="group w-full h-40 bg-primary rounded-2xl overflow-hidden duration-200"
           >
-            <h4 className="h-52 group-hover:h-20 min-h-fit p-5 bg-secondary duration-200 ">
+            <h4 className="lg:h-52 group-hover:h-20 min-h-fit p-5 bg-secondary duration-200 ">
               {item.Q}
             </h4>
             <p className="text-white! p-5">{item.A}</p>

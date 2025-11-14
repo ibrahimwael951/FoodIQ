@@ -8,12 +8,10 @@ import { FadeDownAnimation } from "@/lib/Animation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { BiMenu } from "react-icons/bi";
-import { useTheme } from "next-themes";
 import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const pathName = usePathname();
-  const { resolvedTheme } = useTheme();
   const [menu, setMenu] = useState<boolean>(false);
 
   return (
@@ -22,7 +20,7 @@ const Navbar = () => {
         {...FadeDownAnimation}
         className="fixed top-0 left-0 w-full z-50"
       >
-        <div className="w-full h-20 max-w-7xl mx-auto flex justify-between items-center gap-4 bg-neutral-100 dark:bg-neutral-950  px-5 py-5 lg:px-10 rounded-b-4xl">
+        <div className="w-full h-20 max-w-7xl mx-auto flex justify-between items-center gap-4 bg-neutral-100 dark:bg-neutral-950  px-5 py-5 lg:px-10 rounded-b-4xl shadow">
           <Link
             href="/"
             className="flex text-3xl md:text-4xl items-center gap-2 font-semibold"
@@ -45,7 +43,7 @@ const Navbar = () => {
             ))}
           </div>
           <div className="flex items-center gap-2">
-            <ThemeToggle />  
+            <ThemeToggle />
             <Button
               className="flex items-center justify-center md:hidden"
               onClick={() => setMenu(!menu)}

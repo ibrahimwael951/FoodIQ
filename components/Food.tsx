@@ -192,7 +192,7 @@ export default function FoodList({
         {showFood && (
           <motion.section
             {...Fade}
-            className="fixed top-0 left-0 w-full h-screen bg-black/85 py-10 overflow-y-scroll z-50"
+            className="fixed top-0 left-0 w-full h-screen bg-black/85 py-20 overflow-y-scroll z-50"
           >
             <Button
               changeColor

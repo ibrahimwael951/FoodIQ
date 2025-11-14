@@ -1,24 +1,22 @@
 "use client";
 import { motion } from "framer-motion";
 import Button from "../ui/Button";
-import { FadeUpAnimation } from "@/lib/Animation";
+import { FadeLeftAnimation, FadeRightAnimation } from "@/lib/Animation";
 import { useState } from "react";
 
 const Hero = () => {
   const [ShowSigma, setShowSigma] = useState<boolean>(false);
   return (
-    <main className="relative flex flex-col lg:flex-row justify-center items-center gap-5 lg:gap-10 text-center mt-20 lg:mt-0  overflow-hidden">
-      <div className="  w-full lg:w-2/4 p-10 rounded-2xl z-10 max-w-xl">
-        <motion.h1 {...FadeUpAnimation} className="font-semibold mb-4 ">
-          Best food for your taste
-        </motion.h1>
-        <motion.h6
-          {...FadeUpAnimation}
-          className="text-lg md:text-xl lg:text-2xl opacity-70 mb-5"
-        >
+    <main className="relative flex flex-col lg:flex-row justify-center items-center gap-5 lg:gap-10 text-center overflow-hidden">
+      <motion.div
+        {...FadeLeftAnimation}
+        className="  w-full lg:w-2/4 p-10 rounded-2xl z-10 max-w-xl"
+      >
+        <h1 className="font-semibold mb-4 ">Best food for your taste</h1>
+        <h6 className="text-lg md:text-xl lg:text-2xl opacity-70 mb-5">
           Find out what is meal you gonna bite today , <br />
           and Check Your Snacks is it healthy or not
-        </motion.h6>
+        </h6>
         <div className="flex items-center justify-center gap-5 text-xl ">
           <Button changeColor href="/JoinUs" Animate>
             Join Us
@@ -27,9 +25,9 @@ const Hero = () => {
             Explore Menu
           </Button>
         </div>
-      </div>
+      </motion.div>
       <motion.div
-        {...FadeUpAnimation}
+        {...FadeRightAnimation}
         onClick={() => setShowSigma(!ShowSigma)}
         className="relative group w-full lg:w-2/5 overflow-hidden rounded-3xl max-w-xl "
       >
