@@ -25,7 +25,7 @@ const Customer = [
 ];
 const Customers = () => {
   return (
-    <section className="mb-10">
+    <section>
       <motion.h1 {...FadeUp} className="text-center mb-10 font-semibold">
         What Our <span className="text-secondary"> Customers </span> Say
       </motion.h1>
@@ -48,7 +48,9 @@ const Customers = () => {
               <h5>{item.message}</h5>
             </div>
             <span>
-              <span className="text-secondary text-lg font-semibold">Job: </span>
+              <span className="text-secondary text-lg font-semibold">
+                Job:{" "}
+              </span>
               {item.role}
             </span>
           </motion.div>

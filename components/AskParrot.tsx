@@ -36,7 +36,7 @@ const AskParrot = () => {
     <>
       <motion.section className="max-w-xl mx-auto space-y-5">
         <h1 className="text-center font-bold">
-          Ask <span className="text-secondary"> Parrot </span>
+          Ask <span className="text-secondary"> mr.Parrot </span>
         </h1>
         <div className="relative overflow-hidden rounded-3xl">
           <Image
