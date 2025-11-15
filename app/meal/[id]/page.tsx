@@ -13,12 +13,12 @@ import {
   FadeUpAnimation,
 } from "@/lib/Animation";
 import Button from "@/components/ui/Button";
-
+  
 export default function FoodPage() {
   const { id } = useParams();
   const [meal, setMeal] = useState<Meal | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState<string | null>(null); 
   const [Soon, setSoon] = useState<boolean>(false);
 
   useEffect(() => {
@@ -218,7 +218,7 @@ export default function FoodPage() {
           >
             <motion.div
               {...FadeUpAnimation}
-              className="relative p-16 bg-primary min-h-70 text-white text-center rounded-3xl max-w-3xl flex flex-col justify-center items-center gap-3 overflow-hidden"
+              className="relative p-16 bg-white dark:bg-black min-h-70  text-center rounded-3xl max-w-3xl flex flex-col justify-center items-center gap-3 overflow-hidden"
             >
               <Button
                 changeColor

@@ -1,3 +1,4 @@
+import AskParrot from "@/components/AskParrot";
 import FoodList from "@/components/Food";
 import Categories from "@/components/Home/Categories";
 import FAQ from "@/components/Home/FAQ";
@@ -10,8 +11,9 @@ export default function Page() {
     <main className="space-y-10">
       <Hero />
       <Categories />
+      <HowManyMealDidYouEat/> 
       <MealsList pageSize={4} showSeeMoreBTN />
-      <HowManyMealDidYouEat />
+      <AskParrot />
       <FoodList maxPages={1} pageSize={4} hideLastCard />
       <FAQ />
     </main>
