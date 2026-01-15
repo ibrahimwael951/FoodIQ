@@ -46,20 +46,20 @@ const FAQ = () => {
             onClick={() => setOpenFAQ(openFAQ == i ? null : i)}
             className={` w-full ${
               openFAQ == i ? "h-40" : "h-20"
-            } relative bg-secondary rounded-2xl overflow-hidden duration-200 cursor-pointer `}
+            } relative group bg-secondary border border-secondary text-white hover:bg-transparent hover:text-secondary rounded-2xl overflow-hidden duration-200 cursor-pointer `}
           >
             <h4 className="relative min-h-fit text-lg p-5 duration-200 ">
               {item.Q}
 
               <FaLessThan
-                className={`absolute top-2/4 right-5 -translate-y-2/4 text-white duration-200 ${
+                className={`absolute top-2/4 right-5 -translate-y-2/4 duration-200 ${
                   openFAQ == i && "-rotate-45"
                 }`}
                 size={25}
                 strokeWidth={7}
               />
             </h4>
-            <p className="text-white! p-5">{item.A}</p>
+            <p className="text-white! group-hover:text-secondary! p-5">{item.A}</p>
           </motion.div>
         ))}
       </div>
