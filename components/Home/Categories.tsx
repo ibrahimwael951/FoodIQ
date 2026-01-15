@@ -25,21 +25,19 @@ const menu = [
     icon: LuDessert,
   },
 ];
-const MotionLink = motion.create(Link);
 
 const Categories = () => {
   return (
     <section className="min-h-fit! mb-20">
       <motion.h1 {...FadeUp} className="text-center mb-10 font-semibold">
-        What Our <span className="text-secondary"> Customers </span> Say
+        See our food <span className="text-secondary"> Categories </span>
       </motion.h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl lg:max-w-7xl mx-auto">
         {menu.map((item) => (
-          <MotionLink
+          <motion.div
             key={item.type}
             {...FadeUp}
             whileTap={{ scale: 0.97, transition: { duration: 0.02 } }}
-            href={"/menu"}
             className="flex flex-col justify-center items-center gap-5 p-5 2xl:p-8 text-center rounded-3xl border border-primary/20"
           >
             <div className="flex flex-col justify-center items-center gap-2">
@@ -50,13 +48,16 @@ const Categories = () => {
               <h4 className="font-semibold">{item.type}</h4>
             </div>
             <h6>
-              Do you love {item.type} food ?, Then what are you waiting for!! goo
-              check it out
+              Do you love {item.type} food ?, Then what are you waiting for!!
+              goo check it out
             </h6>
-            <span className=" border-b-2 border-transparent text-secondary font-bold hover:border-secondary duration-100">
+            <Link
+              href={"/menu"}
+              className=" border-b-2 border-transparent text-secondary font-bold hover:border-secondary duration-100"
+            >
               Explore Menu
-            </span>
-          </MotionLink>
+            </Link>
+          </motion.div>
         ))}
       </div>
     </section>
