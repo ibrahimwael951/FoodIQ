@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import { IoFastFoodOutline } from "react-icons/io5";
-import { FaFacebookF, FaInstagram, FaSlack } from "react-icons/fa";
 import { Main, utilityPages } from "@/data/MainLinks";
 import Link from "next/link";
 import Image from "next/image";
@@ -22,24 +21,11 @@ const Footer = () => {
           >
             <IoFastFoodOutline className="text-secondary" size={40} /> FoodIQ
           </Link>
-          <motion.p {...FadeUp} className="text-neutral-200/80!">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem hic
-            voluptate quis porro minima assumenda reprehenderit ex consectetur
-            eligendi laudantium nulla doloremque reiciendis delectus excepturi
-            non, necessitatibus vitae, deserunt cupiditate?
+          <motion.p {...FadeUp} className="max-w-70 text-neutral-200/80!">
+            The best website would makes You HUNGRYYY!
           </motion.p>
-          <div className="flex items-center gap-4">
-            {[
-              { icon: FaFacebookF },
-              { icon: FaSlack },
-              { icon: FaInstagram },
-            ].map((item, i) => (
-              <motion.div key={i} {...FadeUp}>
-                <item.icon className="bg-secondary text-white p-2 w-10 h-10 rounded-full hover:bg-white hover:text-black duration-100" />
-              </motion.div>
-            ))}
-          </div>
-          <h5>
+
+          <p className="text-sm">
             Made By{" "}
             <a
               href="https://ibrlolportfoli.vercel.app/"
@@ -47,7 +33,7 @@ const Footer = () => {
             >
               Apolo
             </a>
-          </h5>
+          </p>
         </div>
 
         {/* second col */}
@@ -59,7 +45,7 @@ const Footer = () => {
                 key={i}
                 {...FadeUp}
                 href={item.href}
-                className="flex items-center gap-2 hover:translate-x-1 hover:text-secondary duration-100"
+                className="flex items-center gap-2"
               >
                 <item.icon />
                 {item.name}
@@ -73,7 +59,7 @@ const Footer = () => {
                 key={i}
                 {...FadeUp}
                 href={item.href}
-                className="flex items-center gap-2 hover:translate-x-1 hover:text-secondary duration-100"
+                className="flex items-center gap-2"
               >
                 <item.icon />
                 {item.name}

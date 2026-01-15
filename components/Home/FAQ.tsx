@@ -1,6 +1,8 @@
 "use client";
 import { FadeUp } from "@/lib/Animation";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { FaLessThan } from "react-icons/fa";
 const FAQs = [
   {
     Q: "What is FoodIQ Doing ?",
@@ -25,30 +27,37 @@ const FAQs = [
 ];
 
 const FAQ = () => {
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   return (
     <section className="my-20 space-y-5">
       <div className="mx-auto w-fit flex flex-col justify-center items-center gap-2 max-w-xl text-center">
         <motion.h1 {...FadeUp} className="font-bold">
-          FAQ<span className="text-secondary">s</span>{" "}
+          FAQ<span className="text-secondary">s</span>
         </motion.h1>
-        <motion.span {...FadeUp} className="text-xs text-secondary">
-          {" "}
-          FAQs not Important at all{" "}
+        <motion.span {...FadeUp} className="text-secondary">
+          FAQs not Important at all
         </motion.span>
-        <motion.p {...FadeUp}>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus,
-          sequi ex. Laborum, perspiciatis{" "}
-        </motion.p>
       </div>
       <div className="w-full max-w-3xl mx-auto grid grid-cols-1  gap-4 text-white! ">
         {FAQs.map((item, i) => (
           <motion.div
             key={i}
             {...FadeUp}
-            className="group w-full h-40 bg-primary rounded-2xl overflow-hidden duration-200"
+            onClick={() => setOpenFAQ(openFAQ == i ? null : i)}
+            className={` w-full ${
+              openFAQ == i ? "h-40" : "h-20"
+            } relative bg-secondary rounded-2xl overflow-hidden duration-200 cursor-pointer `}
           >
-            <h4 className="lg:h-52 group-hover:h-20 min-h-fit p-5 bg-secondary duration-200 ">
+            <h4 className="relative min-h-fit text-lg p-5 duration-200 ">
               {item.Q}
+
+              <FaLessThan
+                className={`absolute top-2/4 right-5 -translate-y-2/4 text-white duration-200 ${
+                  openFAQ == i && "-rotate-45"
+                }`}
+                size={25}
+                strokeWidth={7}
+              />
             </h4>
             <p className="text-white! p-5">{item.A}</p>
           </motion.div>

@@ -38,20 +38,20 @@ const Categories = () => {
           <MotionLink
             key={item.type}
             {...FadeUp}
-            whileTap={{ scale: 0.97 , transition:{duration:0.02}}}
+            whileTap={{ scale: 0.97, transition: { duration: 0.02 } }}
             href={"/menu"}
-            className="group flex flex-col justify-center items-center gap-5 p-5 2xl:p-8 text-center rounded-3xl border border-primary/20 hover:text-white hover:bg-primary duration-100 "
+            className="flex flex-col justify-center items-center gap-5 p-5 2xl:p-8 text-center rounded-3xl border border-primary/20"
           >
             <div className="flex flex-col justify-center items-center gap-2">
               <item.icon
                 size={35}
-                className="w-20 h-20 p-4 text-primary bg-primary/20 rounded-full group-hover:text-white group-hover:bg-white/20 "
+                className="w-20 h-20 p-4 text-primary bg-primary/20 rounded-full"
               />
               <h4 className="font-semibold">{item.type}</h4>
             </div>
             <h6>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-              libero reprehenderit
+              Do you love {item.type} food ?, Then what are you waiting for!! goo
+              check it out
             </h6>
             <span className=" border-b-2 border-transparent text-secondary font-bold hover:border-secondary duration-100">
               Explore Menu

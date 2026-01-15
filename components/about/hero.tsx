@@ -19,14 +19,11 @@ const Hero = () => {
           healthy food for everyone.
         </motion.h1>
         <motion.p {...FadeUpAnimation}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis incidunt
-          eius dicta, a itaque minima, reiciendis laboriosam, assumenda
-          perspiciatis asperiores voluptate enim veritatis hic in ab repudiandae
-          aliquid ex sed.
+          Here You can Find out what is meal you gonna bite today , and Check
+          Your Snacks is it healthy or not, and u can see how to cook your next meal. makes your parents Proud,YEAHH
         </motion.p>
         <motion.p {...FadeUpAnimation}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
-          perspiciatis saepe aut
+         and we don't sell any food
         </motion.p>
       </div>
     </section>
