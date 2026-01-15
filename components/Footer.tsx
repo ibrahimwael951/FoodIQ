@@ -77,7 +77,7 @@ const Footer = () => {
               "/Food/Classic_mael.webp",
               "/Food/Chicken.jpg",
               "/Food/BakedPotato.jpeg",
-              "/Food/friedFood.jfif",
+              "/Food/Hero.jpg",
             ].map((item, i) => (
               <MotionImage
                 key={i}
